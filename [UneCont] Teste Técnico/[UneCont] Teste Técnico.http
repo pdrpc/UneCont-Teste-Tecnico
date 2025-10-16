@@ -1,0 +1,6 @@
+@_UneCont__Teste_Técnico_HostAddress = http://localhost:5240
+
+GET {{_UneCont__Teste_Técnico_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
