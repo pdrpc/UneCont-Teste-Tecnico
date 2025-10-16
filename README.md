@@ -36,9 +36,10 @@ Uso da API
   
   Exemplo de Body:  
   JSON  
-  {
+  ```{
     "ConteudoXml": "<NotaFiscal><Numero>67890</Numero><Prestador><CNPJ>22345678000177</CNPJ></Prestador><Tomador><CNPJ>88765432000166</CNPJ></Tomador><DataEmissao>2023-12-05</DataEmissao><Servico><Descricao>Serviços de   manutenção de sistemas</Descricao><Valor>2400.00</Valor></Servico></NotaFiscal>"
   }
+  ````
   
   Retorno: 201 Created (Sucesso).
   
