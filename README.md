@@ -19,7 +19,23 @@ Arquitetura e Decisões de Design
   Assincronicidade: Uso extensivo de async/await para garantir alta escalabilidade e melhor concorrência nas operações de I/O (Banco de Dados e Leitura de Arquivo).
 
 Configuração (Setup)
-  1. Inicialização do Banco de Dados
+  1. Configuração da Conexão (Segurança)
+    A connection string não está exposta no código-fonte nem nos arquivos appsettings.json. Você deve configurar a conexão usando o Secret Manager Tool (desenvolvimento) ou uma Variável de Ambiente (produção).
+    Variável de Ambiente Exigida:
+      ```
+      ConnectionStrings:DefaultConnection
+      ```` 
+        Exemplo de Valor:
+      ```
+      Server=(localdb)\\mssqllocaldb;Database=UnecontNfseDB;Trusted_Connection=True;MultipleActiveResultSets=true
+      ```` 
+      Você pode usar o comando para injetar o segredo:
+      ```
+      dotnet user-secrets set "ConnectionStrings:DefaultConnection" "..." 
+      ````
+
+
+  2. Inicialização do Banco de Dados
   O banco de dados é inicializado através das Migrations do Entity Framework Core, que cria a estrutura da tabela NotasFiscais no SQL Server (LocalDB):  
   Utilizando o Package Manager Console (PM Console) execute os comandos para criar e aplicar a migração:
     Add-Migration InitialSetup
